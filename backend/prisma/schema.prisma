@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  A
+  I
+}
+
+model header_table{
+    vr_no	Int @unique
+vr_date	DateTime
+ac_name	String
+ac_amt	Float
+status	Status 
+}
+model detail_table{
+    id Int @id @default(autoincrement())
+    sr_no  Int 
+    item_code String
+    item_name String 
+    description String
+    qty Int
+    rate Int
+    amount Int
+    vr_no Int
+}
